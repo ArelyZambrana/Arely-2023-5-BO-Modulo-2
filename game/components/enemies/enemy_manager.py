@@ -1,4 +1,6 @@
 from game.components.enemies.enemy import Enemy
+from game.components.enemies.enemy import Enemy_2
+from game.utils.constants import SCREEN_HEIGHT
 
 class EnemyManager:
     
@@ -9,6 +11,8 @@ class EnemyManager:
         self.add_enemy()
         for enemy in self.enemies:
             enemy.update()
+            if enemy.rect.y >= SCREEN_HEIGHT:
+                self.enemies.remove(enemy)
     
     def draw(self, screen):
         for enemy in self.enemies:
